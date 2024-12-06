@@ -1,0 +1,55 @@
+app = "your-app-name"
+
+# Expose ports
+[[services]]
+  internal_port = 5002
+  external_port = 5002
+  protocol = "tcp"
+  [services.ports]
+    handlers = ["http"]
+    on_open = "open-browser"
+
+[[services]]
+  internal_port = 4000
+  external_port = 4000
+  protocol = "tcp"
+  [services.ports]
+    handlers = ["none"]
+    on_open = "ignore"
+
+[[services]]
+  internal_port = 5000
+  external_port = 5000
+  protocol = "tcp"
+  [services.ports]
+    handlers = ["none"]
+    on_open = "ignore"
+
+[[services]]
+  internal_port = 6379
+  external_port = 6379
+  protocol = "tcp"
+  [services.ports]
+    handlers = ["none"]
+    on_open = "ignore"
+
+[[services]]
+  internal_port = 5432
+  external_port = 5432
+  protocol = "tcp"
+  [services.ports]
+    handlers = ["none"]
+    on_open = "ignore"
+
+# Set the environment variables
+[env]
+  NEXT_PUBLIC_API_URL = "http://localhost:5000"
+  NEXT_PUBLIC_SUBS_URL = "ws://localhost:5000/graphql"
+  NEXT_PUBLIC_DOMAIN = "localhost"
+  NEXT_PUBLIC_WEBAPP_URL = "/"
+  NEXT_PUBLIC_AUTH_URL = "http://localhost"
+  NEXT_PUBLIC_HEIMDALL_URL = "http://localhost"
+
+# Configure the app's build and run settings
+[build]
+  dockerfile = "Dockerfile"
