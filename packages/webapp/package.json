@@ -5,6 +5,11 @@
     "dev": "next dev -p 5002",
     "build": "next build",
     "start": "next start",
+    "build:worker": "opennextjs-cloudflare",
+    "dev:worker": "wrangler dev --port 8771",
+"preview:worker": "npm run build:worker && npm run dev:worker",
+"deploy:worker": "npm run build:worker && wrangler deploy",
+    
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0 --fix",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
     "pretest": "npm run lint",
@@ -78,6 +83,8 @@
     "next-transpile-modules": "^9.0.0",
     "nock": "^13.2.4",
     "node-fetch": "^2.6.7",
+    "@opennextjs/cloudflare": "^0.2.1",
+    
     "postcss": "^8.4.47",
     "postcss-100vh-fix": "^1.0.2",
     "postcss-custom-media": "^11.0.3",
